@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
-const { readJsonFile, writeJsonFile } = require("../middlewares/FileOp");
+const { readJsonFile, writeJsonFile } = require("../helpers/FileOp");
 const actionLogFilePath = "actions.json";
 
 module.exports = {
