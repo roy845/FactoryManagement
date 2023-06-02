@@ -199,7 +199,7 @@ const EmployeesPage = () => {
                               year: "numeric",
                               month: "long",
                               day: "numeric",
-                            })}
+                            })}{" "}
                             {shift.StartingHour} to {shift.EndingHour}
                           </li>
                         ))}
