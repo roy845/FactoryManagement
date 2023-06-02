@@ -70,7 +70,7 @@ const Users = () => {
   useEffect(() => {
     const logAction = JSON.parse(localStorage.getItem("logs") || []);
     setActionsPerDay(logAction);
-  }, []);
+  }, [actionsPerDay]);
 
   return (
     <Layout title={"Users"}>
