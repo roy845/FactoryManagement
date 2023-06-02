@@ -63,10 +63,12 @@ const EmployeesPage = () => {
 
   const navigate = useNavigate();
   const classes = useStyles();
+  
   const handleDepartmentChange = (event) => {
     const selectedValue = event.target.value;
     setSelectedDepartment(event.target.value);
     setSelectedDepartment(selectedValue === "" ? "" : selectedValue);
+    handleLogFileAction();
   };
   const [isLoading, setIsLoading] = useState(false);
 
