@@ -1,0 +1,28 @@
+{
+  "actions": [
+    {
+      "id": "64758f6692b2be999ab7b564",
+      "maxActions": 900,
+      "date": "2.6.2023",
+      "actionAllowed": 88
+    },
+    {
+      "id": "64758ffa61f6bc771fc31df7",
+      "maxActions": 10,
+      "date": "2.6.2023",
+      "actionAllowed": 2
+    },
+    {
+      "id": "6475906ace3d14414d62c8b0",
+      "maxActions": 10,
+      "date": "2.6.2023",
+      "actionAllowed": 2
+    },
+    {
+      "id": "64758f0c92b2be999ab7b560",
+      "maxActions": 10,
+      "date": "2.6.2023",
+      "actionAllowed": 10
+    }
+  ]
+}
