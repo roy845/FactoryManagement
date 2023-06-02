@@ -3,7 +3,7 @@ const jsonfile = require("jsonfile");
 // Read from a JSON file using async/await
 const readJsonFile = async (filePath) => {
   try {
-    const data = jsonfile.readFileSync(filePath);
+    const data = await jsonfile.readFile(filePath);
     return data;
   } catch (err) {
     console.error("Error reading file:", err);
