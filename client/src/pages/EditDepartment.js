@@ -85,7 +85,7 @@ const EditDepartment = () => {
       toast.error(error);
     }
   };
-  console.log(managerId);
+  
   const handleDelete = async (id) => {
     try {
       const { data } = await deleteDepartment(id);
