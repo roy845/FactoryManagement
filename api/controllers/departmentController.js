@@ -43,14 +43,23 @@ module.exports = {
       const { id } = req.params;
       const { Name, Manager } = req.body;
       const department = await Department.findById(id);
-      const updatedDepartment = await Department.findByIdAndUpdate(
-        id,
-        {
+      let updatedDepartment;
+
+      if (Manager === "") {
+        updatedDepartment = await Department.findByIdAndUpdate(id, {
           Name: Name || department.Name,
-          Manager: Manager || department.Manager,
-        },
-        { new: true }
-      );
+          $unset: { Manager: "" },
+        });
+      } else {
+        updatedDepartment = await Department.findByIdAndUpdate(
+          id,
+          {
+            Name: Name || department.Name,
+            Manager: Manager || department.Manager,
+          },
+          { new: true }
+        );
+      }
 
       res.status(200).send(updatedDepartment);
     } catch (error) {

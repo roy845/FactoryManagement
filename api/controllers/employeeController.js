@@ -160,6 +160,12 @@ module.exports = {
         $pull: { employees: employeeID },
       });
 
+      if (employee.IsManager) {
+        await Department.findByIdAndUpdate(departmentID, {
+          $unset: { Manager: "" },
+        });
+      }
+
       await Shift.updateMany(
         { _id: { $in: shiftIDs } },
         { $pull: { employees: employeeID } }

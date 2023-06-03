@@ -19,7 +19,7 @@ import handleLogFileAction from "../functions/handleLogFileAction";
 const EditDepartment = () => {
   const [departmentName, setDepartmentName] = useState("");
   const [employeeId, setEmployeeId] = useState("");
-  const [managerId, setManagerId] = useState("");
+  const [managerId, setManagerId] = useState(null);
   const [managers, setManagers] = useState([]);
   const [employees, setEmployees] = useState([]);
   const [department, setDepartment] = useState([]);
@@ -85,7 +85,7 @@ const EditDepartment = () => {
       toast.error(error);
     }
   };
-
+  console.log(managerId);
   const handleDelete = async (id) => {
     try {
       const { data } = await deleteDepartment(id);
@@ -147,17 +147,21 @@ const EditDepartment = () => {
                 onChange={(e) => setDepartmentName(e.target.value)}
               />
               <label>Manager: </label>
-              <Select
-                value={managerId}
-                onChange={handleSelectedManagerId}
-                disableUnderline
-              >
-                {managers?.map((manager, index) => (
-                  <MenuItem key={index} value={manager?._id}>
-                    {manager?.FirstName} {manager?.LastName}
-                  </MenuItem>
-                ))}
-              </Select>
+              {managers.length > 0 && (
+                <Select
+                  value={managerId || ""}
+                  onChange={handleSelectedManagerId}
+                  disableUnderline
+                >
+                  <MenuItem value="">None</MenuItem>{" "}
+                  {/* Option to set manager to empty */}
+                  {managers?.map((manager, index) => (
+                    <MenuItem key={index} value={manager?._id}>
+                      {manager?.FirstName} {manager?.LastName}
+                    </MenuItem>
+                  ))}
+                </Select>
+              )}
               <label>Employees do not belong: </label>
               <Select
                 value={employeeId}
