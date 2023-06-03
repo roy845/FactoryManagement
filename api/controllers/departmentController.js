@@ -67,10 +67,6 @@ module.exports = {
         return res.status(404).send({ message: "Employee not found" });
       }
 
-      if (employee.IsManager) {
-        return res.status(200).send({ message: "Manager added to department" });
-      }
-
       const updatedDepartment = await Department.findOneAndUpdate(
         { _id: id },
         { $push: { employees: employeeId } },
