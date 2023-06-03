@@ -152,7 +152,7 @@ const EditEmployee = () => {
     }
   };
 
-  const handleDelete = async () => {
+  const handleDelete = async (id) => {
     try {
       const { data } = await deleteEmployee(id);
       toast.success(data.message);
@@ -373,7 +373,7 @@ const EditEmployee = () => {
               <Button
                 variant="contained"
                 color="secondary"
-                onClick={handleDelete}
+                onClick={()=>handleDelete(id)}
               >
                 DELETE
               </Button>
