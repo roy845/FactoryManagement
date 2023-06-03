@@ -67,11 +67,6 @@ module.exports = {
         return res.status(404).send({ message: "Employee not found" });
       }
 
-<<<<<<< HEAD
-=======
-     
-
->>>>>>> 26c3c7f4a727b587ae07db545b50c74e645044f7
       const updatedDepartment = await Department.findOneAndUpdate(
         { _id: id },
         { $push: { employees: employeeId } },
