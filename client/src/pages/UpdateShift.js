@@ -22,9 +22,9 @@ import {
   addEmployeeToShiftUpdateShift,
   getAllAvailableEmployeesForShift,
   getShift,
-  logAction,
   updateShift,
 } from "../serverAPI";
+import handleLogFileAction from "../functions/handleLogFileAction";
 const useStyles = makeStyles({
   tableContainer: {
     maxWidth: 600,
@@ -68,28 +68,6 @@ const UpdateShift = () => {
   const [isLoading, setIsLoading] = useState(false);
   useLogger();
 
-  const handleLogFileAction = async () => {
-    try {
-      const { data } = await logAction();
-      localStorage.setItem("logs", JSON.stringify(data?.actionLog?.actions));
-    } catch (err) {
-      if (!err || !err.response) {
-        toast.error("No Server Response");
-      } else if (err.response?.status === 400) {
-        setAuth({});
-        window.location.replace("/");
-        navigate("/");
-        localStorage.removeItem("auth");
-        localStorage.removeItem("logs");
-      } else if (err?.response?.status === 404) {
-        toast.error(err?.response?.data.error);
-      } else if (err.response?.status === 401) {
-        window.location.replace("/");
-        navigate("/");
-      }
-    }
-  };
-
   useEffect(() => {
     const fetchShift = async () => {
       try {
@@ -132,7 +110,7 @@ const UpdateShift = () => {
       const { data } = await updateShift(id, selectedEmployee, UpdatedShift);
 
       toast.success("shift updated successfully");
-      handleLogFileAction();
+      handleLogFileAction(setAuth, navigate);
       navigate("/shifts");
 
       setDate("");
@@ -149,7 +127,7 @@ const UpdateShift = () => {
         selectedEmployee
       );
       toast.success(data.message);
-      handleLogFileAction();
+      handleLogFileAction(setAuth, navigate);
       navigate("/shifts");
 
       setDate("");

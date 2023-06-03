@@ -22,9 +22,9 @@ import {
   getAllDepartments,
   getAllShifts,
   getEmployee,
-  logAction,
   updateEmployee,
 } from "../serverAPI";
+import handleLogFileAction from "../functions/handleLogFileAction";
 const useStyles = makeStyles({
   tableContainer: {
     maxWidth: 600,
@@ -74,28 +74,6 @@ const EditEmployee = () => {
   useLogger();
 
   const classes = useStyles();
-
-  const handleLogFileAction = async () => {
-    try {
-      const { data } = await logAction();
-      localStorage.setItem("logs", JSON.stringify(data?.actionLog?.actions));
-    } catch (err) {
-      if (!err || !err.response) {
-        toast.error("No Server Response");
-      } else if (err.response?.status === 400) {
-        setAuth({});
-        window.location.replace("/");
-        navigate("/");
-        localStorage.removeItem("auth");
-        localStorage.removeItem("logs");
-      } else if (err?.response?.status === 404) {
-        toast.error(err?.response?.data.error);
-      } else if (err.response?.status === 401) {
-        window.location.replace("/");
-        navigate("/");
-      }
-    }
-  };
 
   useEffect(() => {
     const fetchEmployee = async () => {
@@ -162,7 +140,7 @@ const EditEmployee = () => {
       const { data } = await updateEmployee(id, UpdatedEmployee);
 
       toast.success(`Employee ${data.FirstName} ${data.LastName} updated`);
-      handleLogFileAction();
+      handleLogFileAction(setAuth, navigate);
       navigate("/home");
       setFirstName("");
       setLastName("");
@@ -178,7 +156,7 @@ const EditEmployee = () => {
     try {
       const { data } = await deleteEmployee(id);
       toast.success(data.message);
-      handleLogFileAction();
+      handleLogFileAction(setAuth, navigate);
       navigate("/home");
     } catch (error) {
       toast.error(error);
@@ -189,7 +167,7 @@ const EditEmployee = () => {
     try {
       const { data } = await addEmployeeToShift(id, shiftID);
       toast.success(data.message);
-      handleLogFileAction();
+      handleLogFileAction(setAuth, navigate);
       navigate("/home");
     } catch (error) {
       toast.error(error);
@@ -373,14 +351,16 @@ const EditEmployee = () => {
               </div>
             </form>
             <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => handleAddShift(selectedShift)}
-                disabled={canUpdate || !selectedShift}
-              >
-                ADD
-              </Button>
+              {shifts?.length !== 0 && (
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => handleAddShift(selectedShift)}
+                  disabled={canUpdate || !selectedShift}
+                >
+                  ADD
+                </Button>
+              )}
               <Button
                 variant="contained"
                 color="primary"

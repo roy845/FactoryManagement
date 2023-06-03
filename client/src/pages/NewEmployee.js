@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { Button, TextField } from "@material-ui/core";
 import { Select, MenuItem } from "@material-ui/core";
 import { toast } from "react-hot-toast";
 import { useAuth } from "../context/auth";
 import Spinner from "../components/Spinner";
-import API_URLS, {
-  createEmployee,
-  getAllDepartments,
-  logAction,
-} from "../serverAPI";
+import { createEmployee, getAllDepartments, logAction } from "../serverAPI";
+import handleLogFileAction from "../functions/handleLogFileAction";
 
 const NewEmployee = () => {
   const [firstName, setFirstName] = useState("");
@@ -38,28 +34,6 @@ const NewEmployee = () => {
     fetchAllDepartments();
   }, []);
 
-  const handleLogFileAction = async () => {
-    try {
-      const { data } = await logAction();
-      localStorage.setItem("logs", JSON.stringify(data?.actionLog?.actions));
-    } catch (err) {
-      if (!err || !err.response) {
-        toast.error("No Server Response");
-      } else if (err.response?.status === 400) {
-        setAuth({});
-        window.location.replace("/");
-        navigate("/");
-        localStorage.removeItem("auth");
-        localStorage.removeItem("logs");
-      } else if (err?.response?.status === 404) {
-        toast.error(err?.response?.data.error);
-      } else if (err.response?.status === 401) {
-        window.location.replace("/");
-        navigate("/");
-      }
-    }
-  };
-
   const handleSave = async () => {
     try {
       const newEmployee = {
@@ -72,7 +46,7 @@ const NewEmployee = () => {
 
       const { data } = await createEmployee(newEmployee);
       toast.success(`Employee ${data.FirstName} ${data.LastName} created`);
-      handleLogFileAction();
+      handleLogFileAction(setAuth, navigate);
       navigate("/home");
 
       setFirstName("");

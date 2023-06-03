@@ -19,7 +19,8 @@ import { toast } from "react-hot-toast";
 import useLogger from "../hooks/useLooger";
 import Spinner from "../components/Spinner";
 import { useAuth } from "../context/auth";
-import { getAllEmployees, getAllDepartments, logAction } from "../serverAPI";
+import { getAllEmployees, getAllDepartments } from "../serverAPI";
+import handleLogFileAction from "../functions/handleLogFileAction";
 
 const useStyles = makeStyles({
   tableContainer: {
@@ -68,7 +69,7 @@ const EmployeesPage = () => {
     const selectedValue = event.target.value;
     setSelectedDepartment(event.target.value);
     setSelectedDepartment(selectedValue === "" ? "" : selectedValue);
-    handleLogFileAction();
+    handleLogFileAction(setAuth, navigate);
   };
   const [isLoading, setIsLoading] = useState(false);
 
@@ -113,28 +114,6 @@ const EmployeesPage = () => {
     };
     fetchAllDepartments();
   }, [navigate]);
-
-  const handleLogFileAction = async () => {
-    try {
-      const { data } = await logAction();
-      localStorage.setItem("logs", JSON.stringify(data?.actionLog?.actions));
-    } catch (err) {
-      if (!err || !err.response) {
-        toast.error("No Server Response");
-      } else if (err.response?.status === 400) {
-        setAuth({});
-        window.location.replace("/");
-        navigate("/");
-        localStorage.removeItem("auth");
-        localStorage.removeItem("logs");
-      } else if (err?.response?.status === 404) {
-        toast.error(err?.response?.data.error);
-      } else if (err.response?.status === 401) {
-        window.location.replace("/");
-        navigate("/");
-      }
-    }
-  };
 
   return (
     <Layout title={"Home - Employees"}>
@@ -216,7 +195,7 @@ const EmployeesPage = () => {
               color="primary"
               onClick={() => {
                 navigate("/newEmployee");
-                handleLogFileAction();
+                handleLogFileAction(setAuth, navigate);
               }}
             >
               New Employee

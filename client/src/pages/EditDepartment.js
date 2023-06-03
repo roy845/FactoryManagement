@@ -12,9 +12,9 @@ import {
   getAllEmployees,
   getAllManagers,
   getDepartment,
-  logAction,
   updateDepartment,
 } from "../serverAPI";
+import handleLogFileAction from "../functions/handleLogFileAction";
 
 const EditDepartment = () => {
   const [departmentName, setDepartmentName] = useState("");
@@ -30,28 +30,6 @@ const EditDepartment = () => {
   const [isLoading, setIsLoading] = useState(false);
   useLogger();
   const canUpdate = !departmentName && !managerId;
-
-  const handleLogFileAction = async () => {
-    try {
-      const { data } = await logAction();
-      localStorage.setItem("logs", JSON.stringify(data?.actionLog?.actions));
-    } catch (err) {
-      if (!err || !err.response) {
-        toast.error("No Server Response");
-      } else if (err.response?.status === 400) {
-        setAuth({});
-        window.location.replace("/");
-        navigate("/");
-        localStorage.removeItem("auth");
-        localStorage.removeItem("logs");
-      } else if (err?.response?.status === 404) {
-        toast.error(err?.response?.data.error);
-      } else if (err.response?.status === 401) {
-        window.location.replace("/");
-        navigate("/");
-      }
-    }
-  };
 
   useEffect(() => {
     const fetchDepartment = async () => {
@@ -101,7 +79,7 @@ const EditDepartment = () => {
       toast.success(`${data.Name} department updated`);
 
       setDepartmentName("");
-      handleLogFileAction();
+      handleLogFileAction(setAuth, navigate);
       navigate("/departments");
     } catch (error) {
       toast.error(error);
@@ -112,7 +90,7 @@ const EditDepartment = () => {
     try {
       const { data } = await deleteDepartment(id);
       toast.success(data.message);
-      handleLogFileAction();
+      handleLogFileAction(setAuth, navigate);
       navigate("/departments");
     } catch (error) {
       toast.error(error);
@@ -135,7 +113,7 @@ const EditDepartment = () => {
       toast.success(
         `Employee ${selectedEmployee[0].FirstName} ${selectedEmployee[0].LastName} assigned to ${department.Name}`
       );
-      handleLogFileAction();
+      handleLogFileAction(setAuth, navigate);
       navigate("/departments");
     } catch (error) {}
   };

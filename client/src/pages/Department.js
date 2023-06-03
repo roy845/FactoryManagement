@@ -16,7 +16,8 @@ import { toast } from "react-hot-toast";
 import useLogger from "../hooks/useLooger";
 import { useAuth } from "../context/auth";
 import Spinner from "../components/Spinner";
-import { getAllDepartments, logAction } from "../serverAPI";
+import { getAllDepartments } from "../serverAPI";
+import handleLogFileAction from "../functions/handleLogFileAction";
 
 const useStyles = makeStyles({
   tableContainer: {
@@ -71,28 +72,6 @@ const DepartmentPage = () => {
     };
     fetchAllDepartments();
   }, []);
-
-  const handleLogFileAction = async () => {
-    try {
-      const { data } = await logAction();
-      localStorage.setItem("logs", JSON.stringify(data?.actionLog?.actions));
-    } catch (err) {
-      if (!err || !err.response) {
-        toast.error("No Server Response");
-      } else if (err.response?.status === 400) {
-        setAuth({});
-        window.location.replace("/");
-        navigate("/");
-        localStorage.removeItem("auth");
-        localStorage.removeItem("logs");
-      } else if (err?.response?.status === 404) {
-        toast.error(err?.response?.data.error);
-      } else if (err.response?.status === 401) {
-        window.location.replace("/");
-        navigate("/");
-      }
-    }
-  };
 
   return (
     <Layout title={"Departments"}>
@@ -161,7 +140,7 @@ const DepartmentPage = () => {
             <Button
               onClick={() => {
                 navigate("/newDepartment");
-                handleLogFileAction();
+                handleLogFileAction(setAuth, navigate);
               }}
               variant="contained"
               color="primary"
