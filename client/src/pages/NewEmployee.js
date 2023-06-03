@@ -7,7 +7,11 @@ import { Select, MenuItem } from "@material-ui/core";
 import { toast } from "react-hot-toast";
 import { useAuth } from "../context/auth";
 import Spinner from "../components/Spinner";
-import API_URLS from "../serverAPI";
+import API_URLS, {
+  createEmployee,
+  getAllDepartments,
+  logAction,
+} from "../serverAPI";
 
 const NewEmployee = () => {
   const [firstName, setFirstName] = useState("");
@@ -21,22 +25,22 @@ const NewEmployee = () => {
   const { setAuth } = useAuth();
 
   useEffect(() => {
-    const getAllDepartments = async () => {
+    const fetchAllDepartments = async () => {
       try {
         setIsLoading(true);
-        const { data } = await axios.get(API_URLS.getAllDepartments);
+        const { data } = await getAllDepartments();
         setIsLoading(false);
         setDepartments(data);
       } catch (error) {
         toast.error(error);
       }
     };
-    getAllDepartments();
+    fetchAllDepartments();
   }, []);
 
   const handleLogFileAction = async () => {
     try {
-      const { data } = await axios.post(API_URLS.logAction);
+      const { data } = await logAction();
       localStorage.setItem("logs", JSON.stringify(data?.actionLog?.actions));
     } catch (err) {
       if (!err || !err.response) {
@@ -66,7 +70,7 @@ const NewEmployee = () => {
         IsManager: isManager,
       };
 
-      const { data } = await axios.post(API_URLS.createEmployee, newEmployee);
+      const { data } = await createEmployee(newEmployee);
       toast.success(`Employee ${data.FirstName} ${data.LastName} created`);
       handleLogFileAction();
       navigate("/home");

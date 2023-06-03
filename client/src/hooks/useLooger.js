@@ -3,8 +3,7 @@ import { useAuth } from "../context/auth";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router";
-
-const LOG_ACTION = "http://localhost:8800/api/users/logAction";
+import API_URLS from "../serverAPI";
 
 const useLogger = () => {
   const { setAuth } = useAuth();
@@ -13,7 +12,7 @@ const useLogger = () => {
   useEffect(() => {
     const handleLogFileAction = async () => {
       try {
-        const { data } = await axios.post(LOG_ACTION);
+        const { data } = await axios.post(API_URLS.logAction);
         localStorage.setItem("logs", JSON.stringify(data?.actionLog?.actions));
       } catch (err) {
         if (!err || !err.response) {

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import { useNavigate, useParams } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
-import axios from "axios";
 import { Button, TextField } from "@material-ui/core";
 import { Select, MenuItem } from "@material-ui/core";
 import { toast } from "react-hot-toast";
@@ -17,7 +16,15 @@ import {
 import useLogger from "../hooks/useLooger";
 import { useAuth } from "../context/auth";
 import Spinner from "../components/Spinner";
-import API_URLS from "../serverAPI";
+import {
+  addEmployeeToShift,
+  deleteEmployee,
+  getAllDepartments,
+  getAllShifts,
+  getEmployee,
+  logAction,
+  updateEmployee,
+} from "../serverAPI";
 const useStyles = makeStyles({
   tableContainer: {
     maxWidth: 600,
@@ -70,7 +77,7 @@ const EditEmployee = () => {
 
   const handleLogFileAction = async () => {
     try {
-      const { data } = await axios.post(API_URLS.logAction);
+      const { data } = await logAction();
       localStorage.setItem("logs", JSON.stringify(data?.actionLog?.actions));
     } catch (err) {
       if (!err || !err.response) {
@@ -91,10 +98,10 @@ const EditEmployee = () => {
   };
 
   useEffect(() => {
-    const getEmployee = async () => {
+    const fetchEmployee = async () => {
       try {
         setIsLoading(true);
-        const { data } = await axios.get(`${API_URLS.getEmployee}${id}`);
+        const { data } = await getEmployee(id);
         setIsLoading(false);
         setFirstName(data.FirstName);
         setLastName(data.LastName);
@@ -107,28 +114,28 @@ const EditEmployee = () => {
         toast.error(error);
       }
     };
-    getEmployee();
+    fetchEmployee();
   }, []);
 
   useEffect(() => {
-    const getAllDepartments = async () => {
+    const fetchAllDepartments = async () => {
       try {
         setIsLoading(true);
-        const { data } = await axios.get(API_URLS.getAllDepartments);
+        const { data } = await getAllDepartments();
         setIsLoading(false);
         setDepartments(data);
       } catch (error) {
         toast.error(error);
       }
     };
-    getAllDepartments();
+    fetchAllDepartments();
   }, []);
 
   useEffect(() => {
-    const getAllShifts = async () => {
+    const fetchAllShifts = async () => {
       try {
         setIsLoading(true);
-        const { data } = await axios.get(API_URLS.getAllShifts);
+        const { data } = await getAllShifts();
         setIsLoading(false);
         setShifts(
           data.filter(
@@ -139,7 +146,7 @@ const EditEmployee = () => {
         toast.error(error);
       }
     };
-    getAllShifts();
+    fetchAllShifts();
   }, []);
 
   const handleUpdate = async () => {
@@ -152,10 +159,7 @@ const EditEmployee = () => {
         IsManager: isManager,
       };
 
-      const { data } = await axios.put(
-        `${API_URLS.updateEmployee}${id}`,
-        UpdatedEmployee
-      );
+      const { data } = await updateEmployee(id, UpdatedEmployee);
 
       toast.success(`Employee ${data.FirstName} ${data.LastName} updated`);
       handleLogFileAction();
@@ -172,7 +176,7 @@ const EditEmployee = () => {
 
   const handleDelete = async () => {
     try {
-      const { data } = await axios.delete(`${API_URLS.deleteEmployee}${id}`);
+      const { data } = await deleteEmployee(id);
       toast.success(data.message);
       handleLogFileAction();
       navigate("/home");
@@ -183,9 +187,7 @@ const EditEmployee = () => {
 
   const handleAddShift = async (shiftID) => {
     try {
-      const { data } = await axios.post(
-        `${API_URLS.addEmployeeToShift}${id}/${shiftID}`
-      );
+      const { data } = await addEmployeeToShift(id, shiftID);
       toast.success(data.message);
       handleLogFileAction();
       navigate("/home");

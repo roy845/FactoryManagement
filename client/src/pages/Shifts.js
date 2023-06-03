@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Layout from "../components/Layout";
 import { Button } from "@material-ui/core";
 import { Link, useNavigate } from "react-router-dom";
@@ -18,7 +17,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import useLogger from "../hooks/useLooger";
 import { useAuth } from "../context/auth";
 import Spinner from "../components/Spinner";
-import API_URLS from "../serverAPI";
+import { getAllShifts, logAction, removeEmployeeFromShift } from "../serverAPI";
 const useStyles = makeStyles({
   tableContainer: {
     maxWidth: 600,
@@ -61,13 +60,13 @@ const Shifts = () => {
   const [selectedShift, setSelectedShift] = useState("");
   const navigate = useNavigate();
   const classes = useStyles();
-  useLogger();
   const { setAuth } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
+  useLogger();
 
   const handleLogFileAction = async () => {
     try {
-      const { data } = await axios.post(API_URLS.logAction);
+      const { data } = await logAction();
       localStorage.setItem("logs", JSON.stringify(data?.actionLog?.actions));
     } catch (err) {
       if (!err || !err.response) {
@@ -94,7 +93,7 @@ const Shifts = () => {
   const fetchShifts = async () => {
     try {
       setIsLoading(true);
-      const { data } = await axios.get(API_URLS.getAllShifts);
+      const { data } = await getAllShifts();
       setIsLoading(false);
       setShifts(data);
     } catch (error) {
@@ -102,14 +101,9 @@ const Shifts = () => {
     }
   };
 
-  const removeEmployeFromShift = async (shiftId, employeeId) => {
+  const handleRemoveEmployeFromShift = async (shiftId, employeeId) => {
     try {
-      const { data } = await axios.post(
-        `${API_URLS.removeEmployeeFromShift}${shiftId}`,
-        {
-          employeeId: employeeId,
-        }
-      );
+      const { data } = await removeEmployeeFromShift(shiftId, employeeId);
       toast.success(data.message);
       handleLogFileAction();
       navigate("/shifts");
@@ -202,7 +196,7 @@ const Shifts = () => {
                                     shift?._id,
                                     employee?._id
                                   );
-                                  removeEmployeFromShift(
+                                  handleRemoveEmployeFromShift(
                                     shift?._id,
                                     employee?._id
                                   );

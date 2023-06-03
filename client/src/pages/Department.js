@@ -12,12 +12,11 @@ import {
   Paper,
   Button,
 } from "@material-ui/core";
-import axios from "axios";
 import { toast } from "react-hot-toast";
 import useLogger from "../hooks/useLooger";
 import { useAuth } from "../context/auth";
 import Spinner from "../components/Spinner";
-import API_URLS from "../serverAPI";
+import { getAllDepartments, logAction } from "../serverAPI";
 
 const useStyles = makeStyles({
   tableContainer: {
@@ -60,22 +59,22 @@ const DepartmentPage = () => {
   useLogger();
 
   useEffect(() => {
-    const getAllDepartments = async () => {
+    const fetchAllDepartments = async () => {
       try {
         setIsLoading(true);
-        const { data } = await axios.get(API_URLS.getAllDepartments);
+        const { data } = await getAllDepartments();
         setIsLoading(false);
         setDepartments(data);
       } catch (error) {
         toast.error(error);
       }
     };
-    getAllDepartments();
+    fetchAllDepartments();
   }, []);
 
   const handleLogFileAction = async () => {
     try {
-      const { data } = await axios.post(API_URLS.logAction);
+      const { data } = await logAction();
       localStorage.setItem("logs", JSON.stringify(data?.actionLog?.actions));
     } catch (err) {
       if (!err || !err.response) {

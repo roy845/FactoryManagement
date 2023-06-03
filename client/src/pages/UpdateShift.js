@@ -13,13 +13,18 @@ import {
 import Layout from "../components/Layout";
 import { useNavigate, useParams } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
-import axios from "axios";
 import { toast } from "react-hot-toast";
 import moment from "moment";
 import useLogger from "../hooks/useLooger";
 import { useAuth } from "../context/auth";
 import Spinner from "../components/Spinner";
-import API_URLS from "../serverAPI";
+import {
+  addEmployeeToShiftUpdateShift,
+  getAllAvailableEmployeesForShift,
+  getShift,
+  logAction,
+  updateShift,
+} from "../serverAPI";
 const useStyles = makeStyles({
   tableContainer: {
     maxWidth: 600,
@@ -65,7 +70,7 @@ const UpdateShift = () => {
 
   const handleLogFileAction = async () => {
     try {
-      const { data } = await axios.post(API_URLS.logAction);
+      const { data } = await logAction();
       localStorage.setItem("logs", JSON.stringify(data?.actionLog?.actions));
     } catch (err) {
       if (!err || !err.response) {
@@ -86,10 +91,10 @@ const UpdateShift = () => {
   };
 
   useEffect(() => {
-    const getShift = async () => {
+    const fetchShift = async () => {
       try {
         setIsLoading(true);
-        const { data } = await axios.get(`${API_URLS.getShift}${id}`);
+        const { data } = await getShift(id);
         setIsLoading(false);
         setDate(moment(data.Date));
         setStartingHour(parseInt(data.StartingHour));
@@ -99,16 +104,14 @@ const UpdateShift = () => {
         toast.error(error);
       }
     };
-    getShift();
+    fetchShift();
   }, []);
 
   useEffect(() => {
     const fetchAvailableEmployees = async () => {
       try {
         setIsLoading(true);
-        const { data } = await axios.get(
-          `${API_URLS.getAllAvailableEmployeesForShift}${id}`
-        );
+        const { data } = await getAllAvailableEmployeesForShift(id);
         setIsLoading(false);
         setAvailableEmployees(data);
       } catch (error) {
@@ -126,10 +129,8 @@ const UpdateShift = () => {
         EndingHour: EndingHour,
       };
 
-      const { data } = await axios.put(
-        `${API_URLS.updateShift}${id}/${selectedEmployee}`,
-        UpdatedShift
-      );
+      const { data } = await updateShift(id, selectedEmployee, UpdatedShift);
+
       toast.success("shift updated successfully");
       handleLogFileAction();
       navigate("/shifts");
@@ -143,9 +144,10 @@ const UpdateShift = () => {
   };
   const addEmployeToShift = async () => {
     try {
-      const { data } = await axios.post(`${API_URLS.addEmployeeToShift}${id}`, {
-        employeeId: selectedEmployee,
-      });
+      const { data } = await addEmployeeToShiftUpdateShift(
+        id,
+        selectedEmployee
+      );
       toast.success(data.message);
       handleLogFileAction();
       navigate("/shifts");

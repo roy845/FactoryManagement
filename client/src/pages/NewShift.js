@@ -3,11 +3,10 @@ import { DatePicker } from "@mui/x-date-pickers";
 import { Button, TextField } from "@material-ui/core";
 import Layout from "../components/Layout";
 import { useNavigate } from "react-router";
-import axios from "axios";
 import { toast } from "react-hot-toast";
 import useLogger from "../hooks/useLooger";
 import { useAuth } from "../context/auth";
-import API_URLS from "../serverAPI";
+import { createShift, logAction } from "../serverAPI";
 
 const NewShift = () => {
   const [newShift, setNewShift] = useState({
@@ -23,7 +22,7 @@ const NewShift = () => {
 
   const handleLogFileAction = async () => {
     try {
-      const { data } = await axios.post(API_URLS.logAction);
+      const { data } = await logAction();
       localStorage.setItem("logs", JSON.stringify(data?.actionLog?.actions));
     } catch (err) {
       if (!err || !err.response) {
@@ -43,9 +42,9 @@ const NewShift = () => {
     }
   };
 
-  const createShift = async () => {
+  const createNewShift = async () => {
     try {
-      const { data } = await axios.post(API_URLS.addShift, newShift);
+      const { data } = await createShift(newShift);
       toast.success(data.message);
 
       setNewShift({
@@ -124,7 +123,7 @@ const NewShift = () => {
           <br />
         </form>
         <div style={{ display: "flex", gap: "10px" }}>
-          <Button variant="contained" color="primary" onClick={createShift}>
+          <Button variant="contained" color="primary" onClick={createNewShift}>
             Save
           </Button>
           <Button

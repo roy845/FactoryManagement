@@ -11,10 +11,9 @@ import {
   Paper,
 } from "@material-ui/core";
 import { toast } from "react-hot-toast";
-import axios from "axios";
 import useLogger from "../hooks/useLooger";
 import Spinner from "../components/Spinner";
-import API_URLS from "../serverAPI";
+import { getAllUsers } from "../serverAPI";
 
 const useStyles = makeStyles({
   tableContainer: {
@@ -56,7 +55,7 @@ const Users = () => {
     const fetchUsers = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get(API_URLS.getAllUsers);
+        const response = await getAllUsers();
         setIsLoading(false);
         setUsers(response.data);
       } catch (error) {

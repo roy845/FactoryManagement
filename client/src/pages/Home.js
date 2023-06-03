@@ -15,12 +15,12 @@ import {
   Select,
   MenuItem,
 } from "@material-ui/core";
-import axios from "axios";
 import { toast } from "react-hot-toast";
 import useLogger from "../hooks/useLooger";
 import Spinner from "../components/Spinner";
 import { useAuth } from "../context/auth";
-import API_URLS from "../serverAPI";
+import { getAllEmployees, getAllDepartments, logAction } from "../serverAPI";
+
 const useStyles = makeStyles({
   tableContainer: {
     maxWidth: 600,
@@ -63,7 +63,7 @@ const EmployeesPage = () => {
 
   const navigate = useNavigate();
   const classes = useStyles();
-  
+
   const handleDepartmentChange = (event) => {
     const selectedValue = event.target.value;
     setSelectedDepartment(event.target.value);
@@ -79,10 +79,10 @@ const EmployeesPage = () => {
     : employees;
 
   useEffect(() => {
-    const getAllEmployees = async () => {
+    const fetchAllEmployees = async () => {
       try {
         setIsLoading(true);
-        const { data } = await axios.get(API_URLS.getAllEmployees);
+        const { data } = await getAllEmployees();
         setEmployees(data);
         setIsLoading(false);
       } catch (error) {
@@ -93,14 +93,14 @@ const EmployeesPage = () => {
         }
       }
     };
-    getAllEmployees();
-  }, []);
+    fetchAllEmployees();
+  }, [navigate]);
 
   useEffect(() => {
-    const getAllDepartments = async () => {
+    const fetchAllDepartments = async () => {
       try {
         setIsLoading(true);
-        const { data } = await axios.get(API_URLS.getAllDepartments);
+        const { data } = await getAllDepartments();
         setDepartments(data);
         setIsLoading(false);
       } catch (error) {
@@ -111,12 +111,12 @@ const EmployeesPage = () => {
         }
       }
     };
-    getAllDepartments();
-  }, []);
+    fetchAllDepartments();
+  }, [navigate]);
 
   const handleLogFileAction = async () => {
     try {
-      const { data } = await axios.post(API_URLS.logAction);
+      const { data } = await logAction();
       localStorage.setItem("logs", JSON.stringify(data?.actionLog?.actions));
     } catch (err) {
       if (!err || !err.response) {

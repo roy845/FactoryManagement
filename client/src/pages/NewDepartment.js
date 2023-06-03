@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { Button, TextField } from "@material-ui/core";
 import { toast } from "react-hot-toast";
 import { useAuth } from "../context/auth";
 import useLogger from "../hooks/useLooger";
-import API_URLS from "../serverAPI";
+import { createDepartment, logAction } from "../serverAPI";
 
 const NewDepartment = () => {
   const [departmentName, setDepartmentName] = useState("");
@@ -17,7 +16,7 @@ const NewDepartment = () => {
 
   const handleLogFileAction = async () => {
     try {
-      const { data } = await axios.post(API_URLS.logAction);
+      const { data } = await logAction();
       localStorage.setItem("logs", JSON.stringify(data?.actionLog?.actions));
     } catch (err) {
       if (!err || !err.response) {
@@ -43,10 +42,7 @@ const NewDepartment = () => {
         Name: departmentName,
       };
 
-      const { data } = await axios.post(
-        API_URLS.createDepartment,
-        newDepartment
-      );
+      const { data } = await createDepartment(newDepartment);
       toast.success(`${data.Name} department created`);
 
       setDepartmentName("");

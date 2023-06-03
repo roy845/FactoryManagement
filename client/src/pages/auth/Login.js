@@ -18,7 +18,7 @@ import "../../styles/cursorStyles.css";
 import "../../styles/errorStyles.css";
 import "../../styles/successStyles.css";
 import toast from "react-hot-toast";
-import API_URLS from "../../serverAPI";
+import API_URLS, { login } from "../../serverAPI";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -69,13 +69,7 @@ const Login = () => {
     }
 
     try {
-      const { data } = await axios.post(
-        API_URLS.login,
-        { email, username },
-        {
-          headers: { "Content-Type": "application/json" },
-        }
-      );
+      const { data } = await login(email, username);
 
       toast.success(data?.message);
 
