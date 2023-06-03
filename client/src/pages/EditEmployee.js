@@ -373,7 +373,7 @@ const EditEmployee = () => {
               <Button
                 variant="contained"
                 color="secondary"
-                onClick={()=>handleDelete(id)}
+                onClick={() => handleDelete(id)}
               >
                 DELETE
               </Button>
