@@ -59,6 +59,7 @@ const EmployeesPage = () => {
   const [employees, setEmployees] = useState([]);
   const [departments, setDepartments] = useState([]);
   const [selectedDepartment, setSelectedDepartment] = useState("");
+  const [filteredEmployees, setFilteredEmployees] = useState([]);
   const { setAuth } = useAuth();
   useLogger();
 
@@ -73,11 +74,15 @@ const EmployeesPage = () => {
   };
   const [isLoading, setIsLoading] = useState(false);
 
-  const filteredEmployees = selectedDepartment
-    ? employees?.filter(
-        (employee) => employee?.DepartmentID?.Name === selectedDepartment
-      )
-    : employees;
+  useEffect(() => {
+    setFilteredEmployees(
+      selectedDepartment
+        ? employees?.filter(
+            (employee) => employee?.DepartmentID?.Name === selectedDepartment
+          )
+        : employees
+    );
+  }, [selectedDepartment, employees]);
 
   useEffect(() => {
     const fetchAllEmployees = async () => {
