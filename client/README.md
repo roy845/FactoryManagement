@@ -4,7 +4,7 @@ This project is a web application for managing a factory. It consists of a Node.
 
 ## Prerequisites
 
--Visual Studio Code ![Visual Studio Code Icon](https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg)
+-Visual Studio Code ![Visual Studio Code Icon]<img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" width="24" height="24">
 
 -NodeJS ![NodeJS Icon](https://example.com/path/to/nodejs-icon.png)
 
