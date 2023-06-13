@@ -2,8 +2,6 @@
 
 This project is a web application for managing a factory. It consists of a Node.js + Express-based server, a MongoDB database in the backend, and ReactJs in the frontend. The web application allows users to perform various operations related to employees, departments, and shifts within the factory.
 
-## Installation
-
 ## Prerequisites
 
 -VS Code
@@ -11,6 +9,8 @@ This project is a web application for managing a factory. It consists of a Node.
 -NodeJS
 
 -MongoDB
+
+## Installation
 
 ### Client
 
