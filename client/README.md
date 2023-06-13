@@ -81,9 +81,10 @@ This page displays a form with the selected employee's data for editing. It incl
 
 - First Name: Enter or update the employee's first name.
 - Last Name: Enter or update the employee's last name.
+- Start Work Year: Enter or update the employee's start work year.
 - Department: The department to which the employee belongs. To change the department, select a new department from the dropdown menu.
 - Is Manager: To change the employee manager status , select a new state (Yes/No) from the dropdown menu.
-  After making the necessary changes, click the "Save" button to update the employee's details.
+  After making the necessary changes, click the "Update" button to update the employee's details.
 
 ## Viewing and Managing Shifts
 
