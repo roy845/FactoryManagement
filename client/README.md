@@ -4,11 +4,11 @@ This project is a web application for managing a factory. It consists of a Node.
 
 ## Prerequisites
 
--VS Code
+-Visual Studio Code ![Visual Studio Code Icon](https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg)
 
--NodeJS
+-NodeJS ![NodeJS Icon](https://example.com/path/to/nodejs-icon.png)
 
--MongoDB
+-MongoDB ![MongoDB Icon](https://example.com/path/to/nodejs-icon.png)
 
 ## Installation
 
