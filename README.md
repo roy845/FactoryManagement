@@ -53,6 +53,13 @@ This project is a web application for managing a factory. It consists of a Node.
 
 ## Usage
 
+## Login Page
+
+In order to use the system the user needs to authenticate with username and email from this users list found in this url:
+https://jsonplaceholder.typicode.com/users
+
+<img src = "https://imgtr.ee/images/2023/06/13/QF9RF.png" height="100%">
+
 - Once a user is logged in, their full name will be displayed on every page.
 - Each page includes a "Log-Out" link that redirects the user back to the Log-In page.
 - Users have a limited number of actions per day. Each action a user performs, such as retrieving the list of employees or creating a new department, will reduce their action credit. When the user reaches the maximum allowed actions, they will be redirected out of the system for that day.
