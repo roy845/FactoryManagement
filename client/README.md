@@ -57,7 +57,7 @@ This project is a web application for managing a factory. It consists of a Node.
 - Each page includes a "Log-Out" link that redirects the user back to the Log-In page.
 - Users have a limited number of actions per day. Each action a user performs, such as retrieving the list of employees or creating a new department, will reduce their action credit. When the user reaches the maximum allowed actions, they will be redirected out of the system for that day.
 
-## Employees Page
+## Employees Page - Homepage
 
 This page displays a table with all employees' data, including their full names, departments, and a list of their shifts (date and time). The table provides links to edit an employee's data or department. Additionally, a "New Employee" button redirects to the "Add Employee" page. A dropdown menu allows filtering the employees by department.
 
@@ -108,6 +108,8 @@ This page displays a form with the selected employee's data for editing. It incl
 - To register the employee for a new shift, Select the shift you want to allocate to the employee by clicking on corresponding row in the table.
 - The selected shift will be highlighted.
 - Click the "ADD" button to allocate the selected shift to the employee.
+
+<img src = "https://imgtr.ee/images/2023/06/13/Qh9mB.png" width="800" height="400">
 
 ## New Employee Page
 
