@@ -100,6 +100,28 @@ This page displays a form with the selected employee's data for editing. It incl
 
 This page presents an empty form for creating a new employee, including their department. It includes fields for the employee's personal information and a "Save" button to save the data in the server.
 
+## Creating a New Employee
+
+1. On the "New Employee" page, you will see a form with the following fields:
+
+- First Name: Enter the first name of the employee in the corresponding text field.
+- Last Name: Enter the last name of the employee in the corresponding text field.
+- Start Work Year: Enter the start year of the employee's work in the corresponding text field.
+- Department: Select the department to which the employee belongs from the dropdown menu.
+- Is Manager: Select whether the employee is a manager or not from the dropdown menu.
+
+2. Fill in all the required fields with the appropriate information.
+3. Once all the necessary fields are filled, click the "Save" button to create the new employee.
+4. The employee's information will be saved in the server, and a success message will be displayed confirming the creation of the employee.
+5. The page will be redirected to the "Home" page, where you can view the updated list of employees.
+
+Note: If any error occurs during the creation of the employee, an error message will be displayed, indicating the issue.
+
+## Canceling the Creation of a New Employee
+
+1. On the "New Employee" page, click the "Cancel" button at the bottom.
+2. This will navigate you back to the "Home" page without saving the new employee.
+
 ## Departments Page
 
 This page displays a table with all departments' data, including the department name, manager name, and a list of employees working in that department. The table provides links to edit a department's data or an employee's data. Additionally, a "New Department" button redirects to the "Add Department" page.
@@ -152,8 +174,22 @@ This page presents an empty form for creating a new department. It includes fiel
 
 ## Shifts Page
 
-This page allows creating and modifying shifts and allocating employees to specific shifts.
-Note: Shifts cannot be deleted once created. If you need to make changes to a shift, consider editing the shift details or reallocating employees as needed.
+This page displays a list of shifts and their details, including the date, starting hour, ending hour, and allocated employees. You can also remove employees from each shift.
+
+## Viewing Shifts
+
+- On the "Shifts" page, you will see a table displaying the shifts and their details.
+- Each row represents a shift and includes the following information:
+- Date: Clicking on the date will navigate you to the "Edit Shift" page for that specific shift.
+- Starting Hour: The starting hour of the shift.
+- Ending Hour: The ending hour of the shift.
+- Allocated Employees: A list of employees allocated to the shift.
+- To remove an employee from a shift, click on the Trash can icon next to the employee's name. This action will remove the employee from the shift and update the shift's information.
+- A success message will be displayed upon successful removal of an employee from a shift.
+
+## Creating a New Shift
+
+At the bottom of the page, you will find a "NEW SHIFT" button. Click on this button to navigate to the "New Shift" page and create a new shift.
 
 ## New Shift Page
 
@@ -188,6 +224,14 @@ Note: Only available employees are shown in the table. If there are no available
 ## Users Page
 
 This page displays a table with information about all users. It includes the user name, the maximum number of allowed actions, and the current number of actions allowed for the day.
+
+## Viewing Users
+
+- On the "Users" page, you will see a table displaying the users and their action details.
+- Each row represents a user and includes the following information:
+- Username: The username of the user.
+- Current Number of Actions: The current number of actions performed by the user.
+- Maximum Number of Actions: The maximum number of actions allowed for the user per day.
 
 ## System Users
 
