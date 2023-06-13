@@ -56,6 +56,6 @@ This project is a web application for managing a factory. It consists of a Node.
 
 ## App description
 
--Once a user is logged in, their full name will be displayed on every page.
--Each page includes a "Log-Out" link that redirects the user back to the Log-In page.
--Users have a limited number of actions per day. Each action a user performs, such as retrieving the list of employees or creating a new department, will reduce their action credit. When the user reaches the maximum allowed actions, they will be redirected out of the system for that day.
+- Once a user is logged in, their full name will be displayed on every page.
+- Each page includes a "Log-Out" link that redirects the user back to the Log-In page.
+- Users have a limited number of actions per day. Each action a user performs, such as retrieving the list of employees or creating a new department, will reduce their action credit. When the user reaches the maximum allowed actions, they will be redirected out of the system for that day.
