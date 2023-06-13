@@ -142,6 +142,8 @@ Note: If any error occurs during the creation of the employee, an error message 
 1. On the "New Employee" page, click the "Cancel" button at the bottom.
 2. This will navigate you back to the "Home" page without saving the new employee.
 
+<img src = "https://imgtr.ee/images/2023/06/13/QhLc1.png" width="800" height="400">
+
 ## Departments Page
 
 This page displays a table with all departments' data, including the department name, manager name, and a list of employees working in that department. The table provides links to edit a department's data or an employee's data. Additionally, a "New Department" button redirects to the "Add Department" page.
