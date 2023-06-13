@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# Factory Management Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a web application for managing a factory. It consists of a Node.js + Express-based server, a MongoDB database in the backend, and ReactJs in the frontend. The web application allows users to perform various operations related to employees, departments, and shifts within the factory.
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+## Prerequisites
 
-### `npm start`
+-VS Code
+-NodeJS
+-MongoDB
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Client
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Open a new terminal.
+2. Navigate to the client directory: `cd client`.
+3. Install dependencies: `npm/yarn install`.
 
-### `npm test`
+### Server
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Open a new terminal.
+2. Navigate to the server directory: `cd api`.
+3. Install dependencies: `npm/yarn install`.
+4. Create a `.env` file in the server directory.
+5. In the `.env` file, set the following variables:
+   - `PORT`: The port number on which the server will run (e.g., `PORT=8800`).
+   - `MONGO_DB_URI`: The MongoDB connection URI for connecting to the database (e.g., `MONGODB_URI=mongodb://localhost:27017/mydatabase`).
+   - `JWT_SECRET_KEY`:This key used for authentication and authorization.
+     Here is how you can generate this key:
+     1.Open a terminal.
+     2.Type the following command and press Enter to generate a random JWT secret key
+     require('crypto').randomBytes(32).toString('hex')
+     3.Copy the generated secret key.
+     4.Open the .env file in the server directory.
+     5.Set the JWT_SECRET_KEY variable by pasting the generated secret key.
+     For example:
+     JWT_SECRET_KEY=generated_secret_key
+6. Save the `.env` file.
+7. Run the server: `node server.js`.
 
-### `npm run build`
+## Usage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Running the Server
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Open a new terminal.
+2. Navigate to the server directory: `cd api`.
+3. Run the server: `node server.js`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Running the Client
 
-### `npm run eject`
+1. Open a new terminal.
+2. Navigate to the client directory: `cd client`.
+3. Run the client: `npm/yarn start`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Configuration
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Information about any configuration options or settings.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Contributing
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Guidelines for contributing to the project.
 
-## Learn More
+## License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Specify the project's license and provide a link to the license file.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Acknowledgments
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Any acknowledgments or credits for resources used in the project.
