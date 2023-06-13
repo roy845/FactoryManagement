@@ -109,6 +109,11 @@ This page displays a form with the selected employee's data for editing. It incl
 - The selected shift will be highlighted.
 - Click the "ADD" button to allocate the selected shift to the employee.
 
+## Canceling the Updation of an Employee
+
+1. On the "Update Employee" page, click the "Cancel" button at the bottom.
+2. This will navigate you back to the "Home/Employee Table" page without update the employee.
+
 <img src = "https://imgtr.ee/images/2023/06/13/Qh9mB.png" width="800" height="400">
 
 ## New Employee Page
