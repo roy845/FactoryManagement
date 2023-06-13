@@ -157,6 +157,8 @@ This page displays a table with all departments' data, including the department 
    - Employees: Lists all employees within the department. Clicking on an employee's name will take you to the edit page for that employee.
 3. You can scroll through the table to view all the departments and their details.
 
+<img src = "https://imgtr.ee/images/2023/06/13/Qh5KV.png" width="800" height="400">
+
 ## Edit Department Page
 
 This page displays a form with the selected department's data for editing. It includes fields for the department's information and a dropdown menu to add employees who do not currently belong to that department. The page also provides options to update the department's data or delete the department.
