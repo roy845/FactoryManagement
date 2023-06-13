@@ -7,7 +7,9 @@ This project is a web application for managing a factory. It consists of a Node.
 ## Prerequisites
 
 -VS Code
+
 -NodeJS
+
 -MongoDB
 
 ### Client
