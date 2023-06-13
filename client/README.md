@@ -73,6 +73,29 @@ This page displays a table with all employees' data, including their full names,
 
 This page displays a form with the selected employee's data for editing. It includes fields for the employee's personal information and a table of their shifts. The page also provides an option to register the employee for an existing shift.
 
+## Editing Employee Details
+
+1. Navigate to the "Employees" page.
+2. Click on the name of the employee you want to edit. This will take you to the "Edit Employee" page.
+3. On the "Edit Employee" page, you will see a form with the following fields:
+
+- First Name: Enter or update the employee's first name.
+- Last Name: Enter or update the employee's last name.
+- Department: The department to which the employee belongs. To change the department, select a new department from the dropdown menu.
+- Is Manager: To change the employee manager status , select a new state (Yes/No) from the dropdown menu.
+  After making the necessary changes, click the "Save" button to update the employee's details.
+
+## Viewing and Managing Shifts
+
+- On the "Edit Employee" page, you will see a table displaying the employee's shifts.
+- The table includes the following columns:
+- Date: The date of the shift.
+- Starting Hour: The starting hour of the shift.
+- Ending Hour: The ending hour of the shift.
+- To register the employee for a new shift, Select the shift you want to allocate to the employee by clicking on corresponding row in the table.
+- The selected shift will be highlighted.
+- Click the "ADD" button to allocate the selected shift to the employee.
+
 ## New Employee Page
 
 This page presents an empty form for creating a new employee, including their department. It includes fields for the employee's personal information and a "Save" button to save the data in the server.
