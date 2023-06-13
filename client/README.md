@@ -203,6 +203,8 @@ This page presents an empty form for creating a new department. It includes fiel
 1. On the "New Department" page, click the "Cancel" button at the bottom.
 2. This will navigate you back to the "Department" page without saving the new department.
 
+<img src = "https://imgtr.ee/images/2023/06/13/QhXuJ.png" width="800" height="400">
+
 ## Shifts Page
 
 This page displays a list of shifts and their details, including the date, starting hour, ending hour, and allocated employees. You can also remove employees from each shift.
@@ -222,6 +224,8 @@ This page displays a list of shifts and their details, including the date, start
 
 At the bottom of the page, you will find a "NEW SHIFT" button. Click on this button to navigate to the "New Shift" page and create a new shift.
 
+<img src = "https://imgtr.ee/images/2023/06/13/Q479i.png" width="800" height="400">
+
 ## New Shift Page
 
 This page allows users to create new shifts.
@@ -236,6 +240,8 @@ This page allows users to create new shifts.
 
 1. On the "New Shift" page, click the "Cancel" button at the bottom.
 2. This will navigate you back to the "Shifts" page without saving the new shift.
+
+<img src = "https://imgtr.ee/images/2023/06/13/Q49Ps.png" width="800" height="400">
 
 ## Update Shift Page
 
@@ -262,6 +268,8 @@ Note: Only available employees are shown in the table. If there are no available
 1. On the "Update Shift" page, click the "Cancel" button at the bottom.
 2. This will navigate you back to the "Shifts" page without update the shift.
 
+<img src = "https://imgtr.ee/images/2023/06/13/Q4vMl.png" width="800" height="400">
+
 ## Users Page
 
 This page displays a table with information about all users. It includes the user name, the maximum number of allowed actions, and the current number of actions allowed for the day.
@@ -274,8 +282,12 @@ This page displays a table with information about all users. It includes the use
 - Current Number of Actions: The current number of actions performed by the user.
 - Maximum Number of Actions: The maximum number of actions allowed for the user per day.
 
+<img src = "https://imgtr.ee/images/2023/06/13/Q4QUB.png" width="800" height="400">
+
 ## System Users
 
 - Only registered users are allowed to log in to the web application. All users are pre-declared in advance in the database.
 - Each action a user takes within the system is logged in a JSON file on the server.
 - Users are limited to a maximum number of actions per day. When a user reaches the maximum limit, they will be logged out until the following day.
+
+<img src = "https://imgtr.ee/images/2023/06/13/Q4x6z.png" width="800" height="400">
