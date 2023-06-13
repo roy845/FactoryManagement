@@ -207,6 +207,11 @@ This page allows users to create new shifts.
 2. Fill in the necessary details for the new shift, such as the date, starting hour, and ending hour.
 3. Click the "Save" button to create the new shift.
 
+## Canceling the Creation of a New Shift
+
+1. On the "New Shift" page, click the "Cancel" button at the bottom.
+2. This will navigate you back to the "Shifts" page without saving the new shift.
+
 ## Update Shift Page
 
 This page allows users to update an existing shift with new details and allocate employees to the shift.
@@ -226,6 +231,11 @@ This page allows users to update an existing shift with new details and allocate
 4. Click the "ADD" button to allocate the selected employees to the shift.
 
 Note: Only available employees are shown in the table. If there are no available employees, a message will be displayed indicating that no employees are available.
+
+## Canceling the Updation of a Shift
+
+1. On the "Update Shift" page, click the "Cancel" button at the bottom.
+2. This will navigate you back to the "Shifts" page without update the shift.
 
 ## Users Page
 
