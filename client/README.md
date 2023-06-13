@@ -79,6 +79,8 @@ This page displays a table with all employees' data, including their full names,
 - At the bottom of the page, you will find a "New Employee" button.
 - Clicking on the "New Employee" button will take you to the "New Employee" page, where you can add a new employee to the system.
 
+<img src = "https://imgtr.ee/images/2023/06/13/QAZnB.png" width="800" height="400">
+
 ## Edit Employee Page
 
 This page displays a form with the selected employee's data for editing. It includes fields for the employee's personal information and a table of their shifts. The page also provides an option to register the employee for an existing shift.
