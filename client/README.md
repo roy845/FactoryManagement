@@ -59,7 +59,7 @@ This project is a web application for managing a factory. It consists of a Node.
 
 ## Navigation
 
-To navigate between the pages of the app/site use the navigation drawer located at the left side
+To navigate between the pages of the app/site use the navigation drawer located at the left side of the screen
 <img src = "https://imgtr.ee/images/2023/06/13/Q4fY1.png" width="800" height="400">
 
 ## Employees Page - Homepage
