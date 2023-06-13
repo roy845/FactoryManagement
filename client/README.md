@@ -173,6 +173,11 @@ This page presents an empty form for creating a new department. It includes fiel
 3. Fill in the required details for the new department, such as the department name.
 4. Click the "Save" button to save the new department.
 
+## Canceling the Creation of a New Department
+
+1. On the "New Department" page, click the "Cancel" button at the bottom.
+2. This will navigate you back to the "Department" page without saving the new department.
+
 ## Shifts Page
 
 This page displays a list of shifts and their details, including the date, starting hour, ending hour, and allocated employees. You can also remove employees from each shift.
