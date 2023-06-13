@@ -185,6 +185,8 @@ This page displays a form with the selected department's data for editing. It in
 2. This will delete the department permanently.
 3. A success message will be displayed, confirming the deletion of the department.
 
+<img src = "https://imgtr.ee/images/2023/06/13/QhjVA.png" width="800" height="400">
+
 ## New Department Page
 
 This page presents an empty form for creating a new department. It includes fields for the department's information and a "Save" button to save the data in the server.
