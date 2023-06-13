@@ -1,32 +1,29 @@
 import axios from "axios";
+const BASE_URL = "http://localhost:8800/";
 const API_URLS = {
-  login: "http://localhost:8800/api/auth/login",
-  getAllDepartments: "http://localhost:8800/api/department/getAllDepartments",
-  logAction: "http://localhost:8800/api/users/logAction",
-  editDepartment: "http://localhost:8800/api/department/updateDepartment/",
-  getAllManagers: "http://localhost:8800/api/employee/getAllManagers",
-  getDepartment: "http://localhost:8800/api/department/getDepartment/",
-  getAllEmployees: "http://localhost:8800/api/employee/getAllEmployees/",
-  addEmployeeToDepartment:
-    "http://localhost:8800/api/department/addEmployeeToDepartment/",
-  deleteDepartment: "http://localhost:8800/api/department/deleteDepartment/",
-  getEmployee: "http://localhost:8800/api/employee/getEmployee/",
-  updateEmployee: "http://localhost:8800/api/employee/updateEmployee/",
-  getAllShifts: "http://localhost:8800/api/shift/getAllShifts/",
-  deleteEmployee: "http://localhost:8800/api/employee/deleteEmployee/",
-  addEmployeeToShift: "http://localhost:8800/api/employee/addEmployeeToShift/",
-  addEmployeeToShiftUpdateShift:
-    "http://localhost:8800/api/shift/addEmployeeToShift/",
-  createDepartment: "http://localhost:8800/api/department/addDepartment",
-  createEmployee: "http://localhost:8800/api/employee/addEmployee",
-  addShift: "http://localhost:8800/api/shift/addShift",
-  removeEmployeeFromShift:
-    "http://localhost:8800/api/shift/removeEmployeeFromShift/",
-  updateShift: "http://localhost:8800/api/shift/updateShift/",
-  getShift: "http://localhost:8800/api/shift/getShift/",
-  getAllAvailableEmployeesForShift:
-    "http://localhost:8800/api/employee/getAllAvailableEmployeesForShift/",
-  getAllUsers: "http://localhost:8800/api/users/getAllUsers",
+  login: `${BASE_URL}api/auth/login`,
+  getAllDepartments: `${BASE_URL}api/department/getAllDepartments`,
+  logAction: `${BASE_URL}api/users/logAction`,
+  editDepartment: `${BASE_URL}api/department/updateDepartment/`,
+  getAllManagers: `${BASE_URL}api/employee/getAllManagers`,
+  getDepartment: `${BASE_URL}api/department/getDepartment/`,
+  getAllEmployees: `${BASE_URL}api/employee/getAllEmployees/`,
+  addEmployeeToDepartment: `${BASE_URL}api/department/addEmployeeToDepartment/`,
+  deleteDepartment: `${BASE_URL}api/department/deleteDepartment/`,
+  getEmployee: `${BASE_URL}api/employee/getEmployee/`,
+  updateEmployee: `${BASE_URL}api/employee/updateEmployee/`,
+  getAllShifts: `${BASE_URL}api/shift/getAllShifts/`,
+  deleteEmployee: `${BASE_URL}api/employee/deleteEmployee/`,
+  addEmployeeToShift: `${BASE_URL}api/employee/addEmployeeToShift/`,
+  addEmployeeToShiftUpdateShift: `${BASE_URL}api/shift/addEmployeeToShift/`,
+  createDepartment: `${BASE_URL}api/department/addDepartment`,
+  createEmployee: `${BASE_URL}api/employee/addEmployee`,
+  addShift: `${BASE_URL}api/shift/addShift`,
+  removeEmployeeFromShift: `${BASE_URL}api/shift/removeEmployeeFromShift/`,
+  updateShift: `${BASE_URL}api/shift/updateShift/`,
+  getShift: `${BASE_URL}api/shift/getShift/`,
+  getAllAvailableEmployeesForShift: `${BASE_URL}api/employee/getAllAvailableEmployeesForShift/`,
+  getAllUsers: `${BASE_URL}api/users/getAllUsers`,
 };
 
 export const getAllEmployees = () => {

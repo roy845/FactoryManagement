@@ -13,12 +13,11 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuth } from "../../context/auth";
-import axios from "axios";
 import "../../styles/cursorStyles.css";
 import "../../styles/errorStyles.css";
 import "../../styles/successStyles.css";
 import toast from "react-hot-toast";
-import API_URLS, { login } from "../../serverAPI";
+import { login } from "../../serverAPI";
 
 const useStyles = makeStyles((theme) => ({
   paper: {

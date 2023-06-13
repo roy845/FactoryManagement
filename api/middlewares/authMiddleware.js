@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const { blacklistedTokens } = require("../controllers/usersController");
 
 //Protected Routes based on token
 module.exports = {
@@ -12,6 +13,9 @@ module.exports = {
       }
 
       try {
+        if (blacklistedTokens.includes(token)) {
+          return res.status(401).json({ error: "Invalid token" });
+        }
         const decode = jwt.verify(token, process.env.JWT_SECRET_KEY);
         req.user = decode;
         next();

@@ -6,7 +6,7 @@ import { Select, MenuItem } from "@material-ui/core";
 import { toast } from "react-hot-toast";
 import { useAuth } from "../context/auth";
 import Spinner from "../components/Spinner";
-import { createEmployee, getAllDepartments, logAction } from "../serverAPI";
+import { createEmployee, getAllDepartments } from "../serverAPI";
 import handleLogFileAction from "../functions/handleLogFileAction";
 
 const NewEmployee = () => {

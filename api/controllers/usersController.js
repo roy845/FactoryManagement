@@ -1,11 +1,13 @@
 const User = require("../models/User");
 const { readJsonFile, writeJsonFile } = require("../helpers/FileOp");
 const actionLogFilePath = "actions.json";
+const blacklistedTokens = [];
 
 module.exports = {
   getAllUsers: async (req, res) => {
     try {
       const users = await User.find({});
+
       res.status(200).send(users);
     } catch (error) {
       console.error(error);
@@ -25,6 +27,7 @@ module.exports = {
       );
 
       if (userEntry && userEntry.actionAllowed >= userEntry.maxActions) {
+        blacklistedTokens.push(req.headers.authorization);
         return res.status(400).json({ error: "Max actions reached" });
       } else {
         const user = await User.findById(req.user.userId);
@@ -53,4 +56,5 @@ module.exports = {
       res.status(500).json({ error: "Failed to log action" });
     }
   },
+  blacklistedTokens,
 };

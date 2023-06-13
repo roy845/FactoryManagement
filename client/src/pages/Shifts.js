@@ -32,11 +32,6 @@ const useStyles = makeStyles({
     justifyContent: "center",
     marginTop: 20,
   },
-  bottomContainer: {
-    display: "flex",
-    justifyContent: "center",
-    marginTop: 20,
-  },
   header: {
     display: "flex",
     alignItems: "center",

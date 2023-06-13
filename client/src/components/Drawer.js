@@ -77,6 +77,10 @@ export default function PersistentDrawerLeft() {
     localStorage.getItem("drawerOpen") === "true" || false
   );
   const { auth, setAuth } = useAuth();
+  const [selectedItem, setSelectedItem] = React.useState(
+    +localStorage.getItem("selectedItem") || 0
+  );
+
   const navigate = useNavigate();
 
   const handleDrawerOpen = () => {
@@ -88,47 +92,67 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
     localStorage.setItem("drawerOpen", "false");
   };
+  console.log(selectedItem);
 
   const menuItems = [
     {
       name: "Home",
       icon: <HomeIcon />,
-      onClick: () => {
+      onClick: (index) => {
         navigate("/home");
+        setSelectedItem(index);
+        localStorage.setItem("selectedItem", index);
       },
     },
     {
       name: "Departments",
       icon: <ClassIcon />,
-      onClick: () => {
+      onClick: (index) => {
         navigate("/departments");
+        setSelectedItem(index);
+        localStorage.setItem("selectedItem", index);
       },
     },
     {
       name: "Shifts",
       icon: <BadgeIcon />,
-      onClick: () => {
+      onClick: (index) => {
         navigate("/shifts");
+        setSelectedItem(index);
+        localStorage.setItem("selectedItem", index);
       },
     },
     {
       name: "Users",
       icon: <PersonIcon />,
-      onClick: () => {
+      onClick: (index) => {
         navigate("/users");
+        setSelectedItem(index);
+        localStorage.setItem("selectedItem", index);
       },
     },
     {
       name: "Logout",
       icon: <LogoutIcon />,
-      onClick: () => {
+      onClick: (index) => {
         setAuth(null);
         localStorage.removeItem("auth");
+        localStorage.removeItem("selectedItem");
+        localStorage.removeItem("logs");
+        localStorage.removeItem("drawerOpen");
+
         navigate("/");
         toast.success("Logout Successfully");
+        setSelectedItem(index);
+        document.title = "Factory Management";
       },
     },
   ];
+
+  React.useEffect(() => {
+    setSelectedItem(+localStorage.getItem("selectedItem"));
+    localStorage.removeItem("selectedItem");
+  }, []);
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -189,9 +213,22 @@ export default function PersistentDrawerLeft() {
         <Divider />
         <List>
           {menuItems.map((item, index) => (
-            <ListItem key={index} disablePadding>
-              <ListItemButton onClick={item.onClick}>
-                <ListItemIcon>{item.icon}</ListItemIcon>
+            <ListItem
+              key={index}
+              disablePadding
+              style={{
+                backgroundColor: selectedItem === index ? "purple" : "",
+                color: selectedItem === index ? "white" : "",
+              }}
+            >
+              <ListItemButton onClick={() => item.onClick(index)}>
+                <ListItemIcon
+                  style={{
+                    color: selectedItem === index ? "white" : "",
+                  }}
+                >
+                  {item.icon}
+                </ListItemIcon>
                 <ListItemText primary={item.name} />
               </ListItemButton>
             </ListItem>
