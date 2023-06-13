@@ -54,18 +54,8 @@ This project is a web application for managing a factory. It consists of a Node.
 2. Navigate to the client directory: `cd client`.
 3. Run the client: `npm/yarn start`.
 
-## Configuration
+## App description
 
-Information about any configuration options or settings.
-
-## Contributing
-
-Guidelines for contributing to the project.
-
-## License
-
-Specify the project's license and provide a link to the license file.
-
-## Acknowledgments
-
-Any acknowledgments or credits for resources used in the project.
+-Once a user is logged in, their full name will be displayed on every page.
+-Each page includes a "Log-Out" link that redirects the user back to the Log-In page.
+-Users have a limited number of actions per day. Each action a user performs, such as retrieving the list of employees or creating a new department, will reduce their action credit. When the user reaches the maximum allowed actions, they will be redirected out of the system for that day.
