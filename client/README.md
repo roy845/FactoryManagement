@@ -4,11 +4,17 @@ This project is a web application for managing a factory. It consists of a Node.
 
 ## Prerequisites
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" width="124" height="124">
+- **VS CODE**
+  <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" width="124" height="124">
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" width="124" height="124">
+- **NodeJS**
+  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" width="124" height="124">
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/93/MongoDB_Logo.svg" width="124" height="124">
+- **MongoDB**
+  <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/MongoDB_Logo.svg" width="124" height="124">
+
+- **Material UI**
+  <a href="https://ibb.co/VtWN1my"><img src="https://i.ibb.co/wRNLksH/mui-logo.png" alt="mui-logo" width="124" height="124" border="0"></a>
 
 ## Installation
 
@@ -58,7 +64,7 @@ This project is a web application for managing a factory. It consists of a Node.
 In order to use the system the user needs to authenticate with username and email from this users list found in this url:
 https://jsonplaceholder.typicode.com/users
 
-<img src = "https://imgtr.ee/images/2023/06/13/QF9RF.png" height="100%">
+<a href="https://ibb.co/KF51138"><img src="https://i.ibb.co/YpNrrqV/Sign-In-Page.png" alt="Sign-In-Page" border="0"></a>
 
 - Once a user is logged in, their full name will be displayed on every page.
 - Each page includes a "Log-Out" link that redirects the user back to the Log-In page.
@@ -67,7 +73,7 @@ https://jsonplaceholder.typicode.com/users
 ## Navigation
 
 To navigate between the pages of the app/site use the navigation drawer located at the left side of the screen
-<img src = "https://imgtr.ee/images/2023/06/13/Q4fY1.png" height="100%">
+<a href="https://ibb.co/0KC8dKG"><img src="https://i.ibb.co/9hbzChr/Navigation.png" alt="Navigation" border="0"></a>
 
 ## Employees Page - Homepage
 
@@ -91,7 +97,7 @@ This page displays a table with all employees' data, including their full names,
 - At the bottom of the page, you will find a "New Employee" button.
 - Clicking on the "New Employee" button will take you to the "New Employee" page, where you can add a new employee to the system.
 
-<img src = "https://imgtr.ee/images/2023/06/13/QhyDI.png" width="800" height="400">
+<a href="https://ibb.co/qxzZgdq"><img src="https://i.ibb.co/nRTW1bd/Employees-Page.png" alt="Employees-Page" border="0"></a>
 
 ## Edit Employee Page
 
@@ -126,7 +132,7 @@ This page displays a form with the selected employee's data for editing. It incl
 1. On the "Update Employee" page, click the "Cancel" button at the bottom.
 2. This will navigate you back to the "Home/Employee Table" page without update the employee.
 
-<img src = "https://imgtr.ee/images/2023/06/13/Qh9mB.png" width="800" height="400">
+<a href="https://ibb.co/QNkZ7Xh"><img src="https://i.ibb.co/hWckxCr/Edit-Employee.png" alt="Edit-Employee" border="0"></a>
 
 ## New Employee Page
 
@@ -154,7 +160,7 @@ Note: If any error occurs during the creation of the employee, an error message 
 1. On the "New Employee" page, click the "Cancel" button at the bottom.
 2. This will navigate you back to the "Home" page without saving the new employee.
 
-<img src = "https://imgtr.ee/images/2023/06/13/QhLc1.png" width="800" height="400">
+<a href="https://ibb.co/25FHTWZ"><img src="https://i.ibb.co/cxyVjkY/New-Employee-Page.png" alt="New-Employee-Page" border="0"></a>
 
 ## Departments Page
 
@@ -169,7 +175,7 @@ This page displays a table with all departments' data, including the department 
    - Employees: Lists all employees within the department. Clicking on an employee's name will take you to the edit page for that employee.
 3. You can scroll through the table to view all the departments and their details.
 
-<img src = "https://imgtr.ee/images/2023/06/13/Qh5KV.png" width="800" height="400">
+<a href="https://ibb.co/D76tg5t"><img src="https://i.ibb.co/y8MXBWX/Departments-Page.png" alt="Departments-Page" border="0"></a>
 
 ## Edit Department Page
 
@@ -197,7 +203,7 @@ This page displays a form with the selected department's data for editing. It in
 2. This will delete the department permanently.
 3. A success message will be displayed, confirming the deletion of the department.
 
-<img src = "https://imgtr.ee/images/2023/06/13/QhjVA.png" width="800" height="400">
+<a href="https://ibb.co/j3MG9nK"><img src="https://i.ibb.co/MPVpyFT/Edit-Department-Page.png" alt="Edit-Department-Page" border="0"></a>
 
 ## New Department Page
 
@@ -215,7 +221,7 @@ This page presents an empty form for creating a new department. It includes fiel
 1. On the "New Department" page, click the "Cancel" button at the bottom.
 2. This will navigate you back to the "Department" page without saving the new department.
 
-<img src = "https://imgtr.ee/images/2023/06/13/QhXuJ.png" width="800" height="400">
+<a href="https://ibb.co/vd2CtKM"><img src="https://i.ibb.co/hdpxqtT/New-Department-Page.png" alt="New-Department-Page" border="0"></a>
 
 ## Shifts Page
 
@@ -236,7 +242,7 @@ This page displays a list of shifts and their details, including the date, start
 
 At the bottom of the page, you will find a "NEW SHIFT" button. Click on this button to navigate to the "New Shift" page and create a new shift.
 
-<img src = "https://imgtr.ee/images/2023/06/13/Q479i.png" width="800" height="400">
+<a href="https://ibb.co/TcVtMSr"><img src="https://i.ibb.co/G7KRQLF/Shifts-Page.png" alt="Shifts-Page" border="0"></a>
 
 ## New Shift Page
 
@@ -253,7 +259,7 @@ This page allows users to create new shifts.
 1. On the "New Shift" page, click the "Cancel" button at the bottom.
 2. This will navigate you back to the "Shifts" page without saving the new shift.
 
-<img src = "https://imgtr.ee/images/2023/06/13/Q49Ps.png" width="800" height="400">
+<a href="https://ibb.co/vcmRKWd"><img src="https://i.ibb.co/HKY3kyP/New-Shift-Page.png" alt="New-Shift-Page" border="0"></a>
 
 ## Update Shift Page
 
@@ -280,7 +286,7 @@ Note: Only available employees are shown in the table. If there are no available
 1. On the "Update Shift" page, click the "Cancel" button at the bottom.
 2. This will navigate you back to the "Shifts" page without update the shift.
 
-<img src = "https://imgtr.ee/images/2023/06/13/Q4vMl.png" width="800" height="400">
+<a href="https://ibb.co/LgR88kN"><img src="https://i.ibb.co/NNCssVT/Update-shift-page.png" alt="Update-shift-page" border="0"></a>
 
 ## Users Page
 
@@ -294,7 +300,7 @@ This page displays a table with information about all users. It includes the use
 - Current Number of Actions: The current number of actions performed by the user.
 - Maximum Number of Actions: The maximum number of actions allowed for the user per day.
 
-<img src = "https://imgtr.ee/images/2023/06/13/Q4QUB.png" width="800" height="400">
+<a href="https://ibb.co/99wL8yy"><img src="https://i.ibb.co/Z6HPLcc/Users-page.png" alt="Users-page" border="0"></a>
 
 ## System Users
 
@@ -302,4 +308,4 @@ This page displays a table with information about all users. It includes the use
 - Each action a user takes within the system is logged in a JSON file on the server.
 - Users are limited to a maximum number of actions per day. When a user reaches the maximum limit, they will be logged out until the following day.
 
-<img src = "https://imgtr.ee/images/2023/06/13/Q4x6z.png" width="800" height="400">
+<a href="https://ibb.co/564J5KS"><img src="https://i.ibb.co/6mwq4XT/actions-file.png" alt="actions-file" border="0"></a>
